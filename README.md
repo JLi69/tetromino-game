@@ -12,7 +12,7 @@ To run the program just type `./c-tetris`.
 
 **NOTE: the folder 'shaders' and the files inside of it must be in the same directory as the executable file otherwise the program will not run properly**
 
-**NOTE 2: Some necessary depedencies: ![GLFW](https://www.glfw.org/) and ![glad](https://glad.dav1d.de/)**
+**NOTE 2: Some necessary depedencies: [GLFW](https://www.glfw.org/) and [glad](https://glad.dav1d.de/)**
 
 **NOTE 3: I wrote this targeted towards Linux so there may be some issues on Windows or MacOS. If you figure out a way to compile the source code on these platforms, please fork the project with the necessary adjustments or send a pull request.**
 
