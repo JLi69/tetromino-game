@@ -14,4 +14,8 @@ To run the program just type `./c-tetris`.
 Have fun playing! :)
 
 ## Screenshots
+![Screenshot 1](https://github.com/JLi69/tetromino-game/blob/main/screenshots/Screenshot%20from%202022-02-19%2009-16-45.png)
+![Screenshot 2](https://github.com/JLi69/tetromino-game/blob/main/screenshots/Screenshot%20from%202022-02-19%2009-20-26.png)
+
+## Video
 TBA
