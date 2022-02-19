@@ -24,4 +24,4 @@ Have fun playing! :)
 ![Screenshot 2](https://github.com/JLi69/tetromino-game/blob/main/screenshots/Screenshot%20from%202022-02-19%2009-20-26.png)
 
 ## Video
-![Gameplay Video](https://www.youtube.com/watch?v=TS5ESyjaoLg)
+[Gameplay Video](https://www.youtube.com/watch?v=TS5ESyjaoLg)
