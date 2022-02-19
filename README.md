@@ -3,8 +3,11 @@ A clone of the popular game Tetris.
 
 ## Controls
 Left arrow key = move tetromino to the left
+
 Right arrow key = move tetromino to the right
+
 Up arrow key = rotate the tetromino
+
 Space = drop the tetromino
 
 ## How to Compile the Code
