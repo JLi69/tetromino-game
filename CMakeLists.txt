@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-set(CMAKE_CXX_FLAGS "-O2 -static-libstdc++ -static-ligcc")
+set(CMAKE_CXX_FLAGS "-O2 -static-libstdc++ -static-libgcc")
 
 project(c-tetris)
 
