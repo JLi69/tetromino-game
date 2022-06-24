@@ -6,7 +6,7 @@ unsigned int CreateShader(const char* filename, const GLenum shaderType)
 
 	unsigned int shaderId = glCreateShader(shaderType);
 	FILE* shaderFile = fopen(filename, "r");
-	char* src = malloc(512); //Assume that the file is less than 512 bytes in size
+	char* src = malloc(1024); //Assume that the file is less than 1024 bytes in size
 	while((src[currentCh] = fgetc(shaderFile)) != EOF) currentCh++;
 	const char* srcBegin = &src[0]; //The beginning of the source
 	glShaderSource(shaderId, 1, &srcBegin, NULL); //Get the source for the shader
@@ -84,6 +84,8 @@ void Init(GLFWwindow** win)
 
 	//Set up key input
 	glfwSetKeyCallback(*win, HandleKeyInput);
+	//Handle window reszing
+	glfwSetWindowSizeCallback(*win, HandleWinResize);
 
 	//Set the random seed
 	srand(time(NULL));

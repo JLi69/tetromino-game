@@ -3,7 +3,6 @@
 void GeneratePiece()
 {
 	current.type = rand() % 7;
-	printf("Piece: %d\n", current.type);
 
 	//Set the position of the tetris peice
 	current.x = 3;

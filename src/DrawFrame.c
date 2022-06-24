@@ -1,13 +1,21 @@
 #include "tetris.h"
 
-void DrawFrame(unsigned int program)
+void DrawFrame(unsigned int program, GLFWwindow *win)
 {
 	//Clear the screen
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	int uColorLocation = glGetUniformLocation(program, "uColor"),
-		uOffsetLocation = glGetUniformLocation(program, "uOffset");
+		uOffsetLocation = glGetUniformLocation(program, "uOffset"),
+		uWinWidthLoctaion = glGetUniformLocation(program, "uWinWidth"),
+		uWinHeightLocation = glGetUniformLocation(program, "uWinHeight");
+
+	//Get the window dimensions and pass them to the shader
+	int winW, winH;
+	glfwGetWindowSize(win, &winW, &winH); 
+	glUniform1i(uWinWidthLoctaion, winW);
+	glUniform1i(uWinHeightLocation, winH);
 
 	//Change the color of the tetromino based on the shape
 	switch(current.type)

@@ -24,7 +24,7 @@ int main(int argc, char* args[])
 	//Main game loop
 	while(!glfwWindowShouldClose(glWindow))
 	{
-		DrawFrame(shaderProgram);
+		DrawFrame(shaderProgram, glWindow);
 
 		char title[64] = "Tetris Clone SCORE: 0";
 		int tempScore = score;
@@ -64,7 +64,8 @@ int main(int argc, char* args[])
 
 		//Speed up the peices
 		level = (score / 400) + 1;
-
+		
+		//GLFW stuff
 		glfwSwapBuffers(glWindow);
 		glfwPollEvents();
 	}

@@ -22,14 +22,13 @@ extern Tetromino current;
 extern int blocks[200];
 //Store if the user lost
 extern bool gameOver;
-//Store the score and level of the player
-extern int score;
+extern int score; //Store the score of the player
 
 //Update the frame
 void UpdateFrame();
 
 //Draw the frame
-void DrawFrame(unsigned int program);
+void DrawFrame(unsigned int program, GLFWwindow *win);
 
 //Generate the next peice
 void GeneratePiece();
@@ -45,7 +44,9 @@ bool CheckTetrisFallen();
 void DrawGameOver();
 
 //Handle key input
-void HandleKeyInput(GLFWwindow* win, int key, int scancode, int action, int mods);
+void HandleKeyInput(GLFWwindow *win, int key, int scancode, int action, int mods);
+//Handle window resizing
+void HandleWinResize(GLFWwindow *win, int width, int height);
 
 //Set up the shaders
 unsigned int CreateShader(const char* filename, const GLenum shaderType);

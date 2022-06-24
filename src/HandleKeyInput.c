@@ -19,20 +19,17 @@ void HandleKeyInput(GLFWwindow* win, int key, int scancode, int action, int mods
 		{
 		//Move the tetris peice left or right
 		case GLFW_KEY_RIGHT:
-			printf("right key pressed\n");
 			current.x++;
 			if(!CheckTetrisPos())
 				current.x--;
 			break;
 		case GLFW_KEY_LEFT:
-			printf("left key pressed\n");
 			current.x--;
 			if(!CheckTetrisPos())
 				current.x++;
 			break;
 		//Rotate the tetris peice
 		case GLFW_KEY_UP:
-			printf("up key pressed\n");
 			current.rotation++;
 			RotatePiece();
 			if(!CheckTetrisPos())
@@ -48,6 +45,10 @@ void HandleKeyInput(GLFWwindow* win, int key, int scancode, int action, int mods
 				score++;
 				current.y++;
 			}
+			break;
+		//Move the peice down
+		case GLFW_KEY_DOWN:
+			
 			break;
 		}
 
