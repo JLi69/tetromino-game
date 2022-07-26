@@ -61,13 +61,21 @@ int main(int argc, char* args[])
 
 		//Speed up the peices
 		level = (score / 400) + 1;	
-		
+#ifdef WINDOWS		
 		//Update the peices after a certain period of time
 		if(!gameOver && (double)(clock() - start) / CLOCKS_PER_SEC > 0.3 - 0.02 * (level - 1))
 		{
 			UpdateFrame();
 			start = clock();
 		}
+#else
+		//Update the peices after a certain period of time
+		if(!gameOver && (double)(clock() - start) / CLOCKS_PER_SEC > 0.015 - 0.001 * (level - 1))
+		{
+			UpdateFrame();
+			start = clock();
+		}
+#endif
 	}
 
 	//Release the resources used by glfw
