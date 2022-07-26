@@ -7,10 +7,22 @@ unsigned int CreateShader(const char* filename, const GLenum shaderType)
 	unsigned int shaderId = glCreateShader(shaderType);
 	FILE* shaderFile = fopen(filename, "r");
 	char* src = malloc(1024); //Assume that the file is less than 1024 bytes in size
-	while((src[currentCh] = fgetc(shaderFile)) != EOF) currentCh++;
+	for(int i = 0; i < 1024; i++)
+	{
+		src[i] = ' ';
+		if(i == 1023)
+			src[i] = '\0';
+	}
+	while((src[currentCh] = fgetc(shaderFile)) != EOF) currentCh++;	
+	for(int i = 0; i < 1024; i++)
+		if(src[i] == EOF)
+			src[i] = ' ';	
 	const char* srcBegin = &src[0]; //The beginning of the source
 	glShaderSource(shaderId, 1, &srcBegin, NULL); //Get the source for the shader
 	glCompileShader(shaderId); //Compile the shader
+	
+	printf("%s\n", src);
+
 	free(src);
 
 	fclose(shaderFile); //Close the file

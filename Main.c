@@ -47,27 +47,27 @@ int main(int argc, char* args[])
 					tempScore /= 10;
 				}
 
-			if((float)(clock() - start) / CLOCKS_PER_SEC > 0.001)
+			if((float)(clock() - start) / CLOCKS_PER_SEC > 0.01)
 			{
 				DrawGameOver();
 				start = clock();
 			}
 		}
 		glfwSetWindowTitle(glWindow, title);
+	
+		//GLFW stuff
+		glfwSwapBuffers(glWindow);
+		glfwPollEvents();
 
+		//Speed up the peices
+		level = (score / 400) + 1;	
+		
 		//Update the peices after a certain period of time
-		if(!gameOver && (float)(clock() - start) / CLOCKS_PER_SEC > 0.015 - 0.001 * (level - 1))
+		if(!gameOver && (double)(clock() - start) / CLOCKS_PER_SEC > 0.3 - 0.02 * (level - 1))
 		{
 			UpdateFrame();
 			start = clock();
 		}
-
-		//Speed up the peices
-		level = (score / 400) + 1;
-		
-		//GLFW stuff
-		glfwSwapBuffers(glWindow);
-		glfwPollEvents();
 	}
 
 	//Release the resources used by glfw
