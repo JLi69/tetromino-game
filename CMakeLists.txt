@@ -1,24 +1,30 @@
 cmake_minimum_required(VERSION 3.11)
 
 add_subdirectory(${CMAKE_SOURCE_DIR}/glad)
-add_custom_target(
-	glad_lib
-	COMMAND cd glad && make
-)
 
 if(${CMAKE_HOST_SYSTEM_NAME} STREQUAL "Windows")
 	message("on windows\n")
-	set(CMAKE_C_FLAGS "-O2 -static-libgcc -mwindows -Wl,-Bstatic,--whole-archive -lwinpthread -Wl,-Bdynamic,--no-whole-archive")		
+	set(CMAKE_C_FLAGS "-O2 -static-libgcc -mwindows -Wl,-Bstatic,--whole-archive -lwinpthread -Wl,-Bdynamic,--no-whole-archive")
+	add_custom_target(
+		glad_lib
+		COMMAND cd glad && mingw32-make
+	)
 else()
 	message("on linux\n")	
 	set(CMAKE_C_FLAGS "-O2 -static-libgcc")
+	
+	add_custom_target(
+		glad_lib
+		COMMAND cd glad && make
+	)
 endif()
 
 project(c-tetris)
 
 find_package(OpenGL REQUIRED)
 
-include_directories(${PROJECT_SOURCE_DIR}/dependencies/include)
+include_directories(${CMAKE_BINARY_DIR}/glad/include)
+include_directories(${CMAKE_SOURCE_DIR}/glfw/include)
 
 add_executable(
 	${PROJECT_NAME}
