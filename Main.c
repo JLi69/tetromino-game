@@ -1,4 +1,5 @@
 #include "src/tetris.h"
+#include <sys/time.h>
 
 Tetromino current;
 int blocks[200] = { 0 };
@@ -19,7 +20,8 @@ int main(int argc, char* args[])
 	unsigned int shaderProgram = SetupShaderProgram();
 	glUseProgram(shaderProgram);
 
-	clock_t start = clock();
+	struct timeval start;
+	gettimeofday(&start, 0);
 
 	//Main game loop
 	while(!glfwWindowShouldClose(glWindow))
@@ -46,11 +48,14 @@ int main(int argc, char* args[])
 					title[i] = (char)(tempScore % 10 + '0');
 					tempScore /= 10;
 				}
-
-			if((float)(clock() - start) / CLOCKS_PER_SEC > 0.01)
+			
+			struct timeval now;
+			gettimeofday(&now, 0);
+			double secondsPassed = now.tv_sec - start.tv_sec + 1e-6 * (now.tv_usec - start.tv_usec);
+			if(secondsPassed > 0.03)
 			{
 				DrawGameOver();
-				start = clock();
+				gettimeofday(&start, 0);
 			}
 		}
 		glfwSetWindowTitle(glWindow, title);
@@ -61,21 +66,16 @@ int main(int argc, char* args[])
 
 		//Speed up the peices
 		level = (score / 400) + 1;	
-#ifdef WINDOWS		
+		
 		//Update the peices after a certain period of time
-		if(!gameOver && (double)(clock() - start) / CLOCKS_PER_SEC > 0.3 - 0.02 * (level - 1))
+		struct timeval now;
+		gettimeofday(&now, 0);
+		double secondsPassed = now.tv_sec - start.tv_sec + 1e-6 * (now.tv_usec - start.tv_usec);	
+		if(!gameOver && secondsPassed > 0.3 - 0.02 * (level - 1))
 		{
 			UpdateFrame();
-			start = clock();
+			gettimeofday(&start, 0);	
 		}
-#else
-		//Update the peices after a certain period of time
-		if(!gameOver && (double)(clock() - start) / CLOCKS_PER_SEC > 0.015 - 0.001 * (level - 1))
-		{
-			UpdateFrame();
-			start = clock();
-		}
-#endif
 	}
 
 	//Release the resources used by glfw
