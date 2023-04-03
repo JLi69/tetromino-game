@@ -27,7 +27,6 @@ add_executable(
 	${PROJECT_SOURCE_DIR}/src/HandleWinResize.c
 )
 
-target_link_libraries(${PROJECT_NAME} ${CMAKE_BINARY_DIR}/glad/libglad.a)
 target_link_libraries(${PROJECT_NAME} OpenGL::GL) 
 target_link_libraries(${PROJECT_NAME} glfw3)
 target_link_libraries(${PROJECT_NAME} m)
