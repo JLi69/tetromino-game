@@ -81,7 +81,6 @@ void Init(GLFWwindow** win)
 	//Initialize glfw
 	if(!glfwInit()) exit(-1);
 
-	glfwSwapInterval(1);
 	//Initialize and set up the window
 	*win = glfwCreateWindow(400, 800, "Tetris Clone", NULL, NULL);
 	if(!*win)
@@ -90,6 +89,7 @@ void Init(GLFWwindow** win)
 		exit(-1);
 	}
 	glfwMakeContextCurrent(*win);
+	glfwSwapInterval(1);
 
 	//Initialize glad
 	if(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
