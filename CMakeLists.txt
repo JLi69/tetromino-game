@@ -12,7 +12,7 @@ project(c-tetris)
 
 find_package(OpenGL REQUIRED)
 
-include_directories(${CMAKE_BINARY_DIR}/glad/include)
+include_directories(glad/include)
 
 add_executable(
 	${PROJECT_NAME}
